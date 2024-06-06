@@ -29,6 +29,7 @@ class FormController extends Controller
         } catch (OptimisticLockException $e) {
             return view('form', [
                 'message' => $e->getMessage(),
+                'contentLocked' => $request->content,
                 'content' => $content->content ?? '',
                 'version' => $content->version,
             ]);
